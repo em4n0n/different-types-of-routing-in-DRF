@@ -30,6 +30,7 @@ urlpatterns = [
     ))
 ]
 
-router = SimpleRouter(trailing_slash=False)
-router.register('books', views.BookView, basename='books')
-urlpatterns = router.urls
+# # Routing with SimpleRouter class in DRF
+# router = SimpleRouter(trailing_slash=False)
+# router.register('books', views.BookView, basename='books')
+# urlpatterns = router.urls
