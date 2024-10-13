@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from rest_framework.routers import SimpleRouter
+from rest_framework.routers import DefaultRouter
 
 # URL pattern for a class method
 # urlpatterns = [
@@ -13,24 +13,29 @@ from rest_framework.routers import SimpleRouter
 # ]
 
 # URL patterns for routing class that extend viewsets
-urlpatterns = [
-    path('books', views.BookView.as_view(
-        {
-            'get': 'list',
-            'post': 'create',
-        }
-    )),
-    path('books/<int:pk>',views.BookView.as_view(
-        {
-            'get': 'retrieve',
-            'put': 'update',
-            'patch': 'partial_update',
-            'delete': 'destroy',
-        }
-    ))
-]
+# urlpatterns = [
+#     path('books', views.BookView.as_view(
+#         {
+#             'get': 'list',
+#             'post': 'create',
+#         }
+#     )),
+#     path('books/<int:pk>',views.BookView.as_view(
+#         {
+#             'get': 'retrieve',
+#             'put': 'update',
+#             'patch': 'partial_update',
+#             'delete': 'destroy',
+#         }
+#     ))
+# ]
 
 # # Routing with SimpleRouter class in DRF
 # router = SimpleRouter(trailing_slash=False)
 # router.register('books', views.BookView, basename='books')
 # urlpatterns = router.urls
+
+# Routing with DefaultRouter class in DRF
+router = DefaultRouter(trailing_slash=False)
+router.register('books', views.BookView, basename='books')
+urlpatterns = router.urls
