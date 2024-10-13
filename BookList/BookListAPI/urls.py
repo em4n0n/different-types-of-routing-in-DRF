@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from rest_framework.routers import SimpleRouter
 
 # URL pattern for a class method
 # urlpatterns = [
@@ -28,3 +29,7 @@ urlpatterns = [
         }
     ))
 ]
+
+router = SimpleRouter(trailing_slash=False)
+router.register('books', views.BookView, basename='books')
+urlpatterns = router.urls
