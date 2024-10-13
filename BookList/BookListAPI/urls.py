@@ -7,6 +7,24 @@ from . import views
 # ]
 
 # URL pattern for routing a class-based view
+# urlpatterns = [
+#     path('books/<int:pk>', views.BookView.as_view())
+# ]
+
+# URL patterns for routing class that extend viewsets
 urlpatterns = [
-    path('books/<int:pk>', views.BookView.as_view())
+    path('books', views.BookView.as_view(
+        {
+            'get': 'list',
+            'post': 'create',
+        }
+    )),
+    path('books/<int:pk>',views.BookView.as_view(
+        {
+            'get': 'retrieve',
+            'put': 'update',
+            'patch': 'partial_update',
+            'delete': 'destroy',
+        }
+    ))
 ]
